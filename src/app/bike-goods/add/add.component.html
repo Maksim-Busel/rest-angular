@@ -1,0 +1,50 @@
+<div class="form-container">
+    <div class="window-title-wrap">
+        <h3 class="window-title">Add Bike Goods</h3>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="openDialog()">
+        <div class="group-container">
+            <div class="form-group">
+                <label class="label" for="name">Name</label>
+                <input class="input-item" type="text" formControlName="name" id="name">
+                <div *ngIf="form.get('name').touched && form.get('name').invalid">
+                    <small class="error" *ngIf="form.get('name').errors.required">Enter name</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label" for="price">Price (0-5000)</label>
+                <input class="input-item" type="number" formControlName="price" id="price" min="0" max="5000">
+                <div *ngIf="form.get('price').touched && form.get('price').invalid">
+                    <small class="error" *ngIf="form.get('price').errors.required">Enter price</small>
+                    <small class="error" *ngIf="form.get('price').errors.min">Price must be at least 0.</small>
+                    <small class="error" *ngIf="form.get('price').errors.max">Price must be no more 5000 .</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label" for="goodsType">Goods type</label>
+                <select class="input-item form-select" formControlName="goodsType" id="goodsType">
+                    <option value="BIKE">Bike</option>
+                    <option value="CLOTHES">Clothes</option>
+                    <option value="SPARES">Spares</option>
+                    <option value="CONSUMABLES">Consumables</option>
+                </select>
+                <div *ngIf="form.get('goodsType').touched && form.get('goodsType').invalid">
+                    <small class="error" *ngIf="form.get('goodsType').errors.required">Choose goods type</small>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="label" for="upload-btn">Select Image</label>
+                <div class="input-item custom-item-upload-image">
+                    <span class="upload-text" id="upload-text">Click on the icon to download the image</span>
+                    <input class="real-btn" type="file" name="image" id="upload-btn" hidden>
+                    <img class="icon-upload" src="/assets/img/certificate/upload-image.png" alt="icon-upload" id="icon-upload">
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn back" type="reset">Reset</button>
+                <button class="btn save" type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+</div>

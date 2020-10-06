@@ -1,0 +1,23 @@
+<main class="auth" *ngIf="logout; else loading">
+    <form class="auth-form" [formGroup]="form" (ngSubmit)="submit()" >
+        <input class="input" type="text" name="username" placeholder="Login" formControlName="login" id="login">
+        <div *ngIf="form.get('login').touched && form.get('login').invalid">
+            <small class="error" *ngIf="form.get('login').errors.required">Enter login</small>
+        </div>
+
+        <input class="input" type="password" name="password" placeholder="Password" formControlName="password" id="password">
+        <div *ngIf="form.get('password').touched && form.get('password').invalid">
+            <small class="error" *ngIf="form.get('password').errors.required">Enter password</small>
+            <small class="error" *ngIf="form.get('password').errors.minlength">
+                Password must be at least {{form.get('password').errors.minlength.requiredLength}} characters.
+                Now he is {{form.get('password').errors.minlength.actualLength}}
+            </small>
+        </div>
+
+        <button class="btn logon" type="submit" [disabled]="form.invalid || submitted">Logon</button>
+    </form>
+</main>
+
+<ng-template #loading>
+    <p class="loading">Loading...</p>
+</ng-template>

@@ -1,0 +1,39 @@
+<div class="page-title">
+    <div class="page-title-item-wrap">
+        <h1 class="page-title-item">My orders</h1>
+    </div>
+</div>
+
+<div *ngIf="orders; else noOrders">
+    <table  class="table my-orders">
+        <thead class="table-head">
+            <tr>
+                <th class="cell-head">id</th>
+                <th class="cell-head">date</th>
+                <th class="cell-head">Cost (BYN)</th>
+            </tr>
+        </thead>
+        <tbody class="table-body">
+            <tr *ngFor="let order of orders; let id = index">
+                <td class="cell-body">
+                    {{ order.id }}
+                </td>
+                <td class="cell-body">
+                    {{ order.orderDate }}
+                </td>
+                <td class="cell-body">
+                    {{ order.priceTotal }}
+                </td>
+            </tr>
+        </tbody>
+            <tr>
+                <td></td>
+                <td class="cell-total-price price-text">Total price: </td>
+                <td class="cell-total-price price-number">{{ totalPrice }}</td>
+            </tr>
+    </table>
+</div>
+
+<ng-template #noOrders>
+    <p class="loading">You have no orders yet. <a routerLink="/certificates/list">Go to goods</a></p>
+</ng-template>

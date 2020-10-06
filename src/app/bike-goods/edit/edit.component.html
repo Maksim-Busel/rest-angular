@@ -1,0 +1,47 @@
+<div class="form-container"  *ngIf="form; else loading">
+    <div class="window-title-wrap">
+        <h3 class="window-title">Edit Bike goods</h3>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="openDialog()">
+        <div class="group-container">
+            <div class="form-group">
+                <label class="label" for="name">Name</label>
+                <input class="input-item" type="text" formControlName="name" id="name">
+                <div *ngIf="form.get('name').touched && form.get('name').invalid">
+                    <small class="error" *ngIf="form.get('name').errors.required">Enter name</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="price">Price (0-5000)</label>
+                <input class="input-item" type="number" formControlName="price" id="price" min="0" max="5000">
+                <div *ngIf="form.get('price').touched && form.get('price').invalid">
+                    <small class="error" *ngIf="form.get('price').errors.required">Enter price</small>
+                    <small class="error" *ngIf="form.get('price').errors.min">Price must be at least 0.</small>
+                    <small class="error" *ngIf="form.get('price').errors.max">Price must be no more 5000 .</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="goodsType">Goods type</label>
+                <select class="input-item form-select" formControlName="goodsType" id="goodsType">
+                    <option class="form-select" value="BIKE">Bike</option>
+                    <option class="form-select" value="CLOTHES">Clothes</option>
+                    <option class="form-select" value="SPARES">Spares</option>
+                    <option class="form-select" value="CONSUMABLES">Consumables</option>
+                </select>
+                <div *ngIf="form.get('goodsType').touched && form.get('goodsType').invalid">
+                    <small class="error" *ngIf="form.get('goodsType').errors.required">Choose goods type</small>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn back" type="reset">Reset</button>
+                <button class="btn save" type="submit" [disabled]="form.invalid || submitted">Edit</button>
+            </div>
+        </div>
+    </form>
+</div>
+<ng-template #loading>
+    <p class="loading">Loading...</p>
+</ng-template>

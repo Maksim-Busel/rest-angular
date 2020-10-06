@@ -1,0 +1,11 @@
+<mat-dialog-content class="mat-typography">
+    <div class="dialog-window">
+      <p class="title-message">{{title}}</p>
+      <p class="message">{{text}}</p>
+    </div>
+    <mat-dialog-actions align="end">
+        <button mat-raised-button mat-dialog-close>{{btnFalse}}</button>
+        <button mat-raised-button color="warn" [mat-dialog-close]="true" cdkFocusInitial> {{btnTrue}} </button>
+    </mat-dialog-actions>
+</mat-dialog-content>
+ 

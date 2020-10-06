@@ -1,0 +1,28 @@
+<div class="page-title">
+    <div class="page-title-item-wrap">
+        <h1 class="page-title-item">Gift certificates</h1>
+    </div>
+</div>
+
+<div class="tabs-content" id="tabs-content" *ngIf="certificates; else loading">
+    <div class="catalog-item" *ngFor="let certificate of certificates">
+        <a routerLink="/certificates/certificate/{{ certificate.id }}" id="link-catalog-item" (click)="this.utils.savePositionInLocalStorage()">
+            <img class="catalog-item-image" src="/assets/img/gift-certificate.jpeg" alt="catalog-item-image" title="More details">
+        </a>
+        <div class="catalog-item-info">
+            <div class="catalog-info-content">
+                <div class="bold-black-text" id="catalog-item-title">{{ certificate.name }}</div>
+                <img class="icon" src="/assets/img/header/heart_icon-icons.com_70945.svg" alt="to-favorite" title="Add to favorites" (click)="showFavoriteWindow()">
+            </div>
+            <div class="catalog-content-expires">Expires in <span class="bold-black-text">{{ certificate.duration.replace("_", " ") }}</span></div>
+            <div class="catalog-price-wrap">
+                <div class="bold-black-text">{{ certificate.price }} BYN</div>
+                <button class="catalog-btn-cart" (click)="openDialog(certificate)">Add to cart</button>
+            </div>
+        </div>
+    </div>
+    <app-scroll-buttons></app-scroll-buttons>
+</div>
+<ng-template #loading>
+    <p class="loading">Loading...</p>
+</ng-template>

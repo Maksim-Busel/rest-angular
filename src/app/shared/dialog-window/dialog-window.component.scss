@@ -1,0 +1,17 @@
+.dialog-window {
+    width: 300px;
+    height: 200px;
+  
+    .title-message {
+      font-size: 24px;
+      font-weight: 500;
+      color: rgba(143, 17, 17, 0.877);
+      padding-bottom: 20px;
+    }
+  
+    .message {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  }

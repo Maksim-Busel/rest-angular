@@ -1,0 +1,50 @@
+<header class="header">
+    <div class="header-item">
+        <div class="menu" *ngIf="auth.isAdmin()" [ngClass]="{'move-menu': isShowMenu}">
+            <div class="menu-wrapper" title="Show menu" (click)='showMenu()' [ngClass]="{'move-wrapper': isShowMenu}">
+                <p class="menu-item"></p>
+                <p class="menu-item"></p>
+                <p class="menu-item"></p>
+            </div>
+            <ul>
+                <li>Menu</li>
+                <li routerLinkActive="active"><a routerLink="/shared/home">Main</a></li>
+                <li routerLinkActive="active"><a routerLink="/certificates/dashboard">Dashboard certificates</a></li>
+                <li routerLinkActive="active"><a routerLink="/bike-goods/dashboard">Dashboard bike goods</a></li>
+                <li routerLinkActive="active"><a routerLink="/users/dashboard">Dashboard users</a></li>
+                <li routerLinkActive="active"><a routerLink="/orders/dashboard">Dashboard orders</a></li>
+                <li routerLinkActive="active"><a routerLink="/certificates/add">Add certificate</a></li>
+                <li routerLinkActive="active"><a routerLink="/bike-goods/add">Add bike goods</a></li>
+                <li routerLinkActive="active"><a routerLink="/bike-goods/bike-goods">List bike goods</a></li>
+            </ul>
+        </div> 
+        <a class="nav-link logo" routerLink="shared/home" title="Go to main" [ngClass]="{'hide': isShowMenu}">
+            <h3 class="icon logo">Logo</h3>
+        </a>
+    </div>
+    <div class="header-item">
+        <input class="header-search" type="text" (input)="searchCertificates($event.target.value)" placeholder="Search by certificate name" id="search">
+        <select class="header-select" name="goodsType" id="goodsType">
+            <option value="certificates" selected>Certificates</option>
+        </select>
+    </div>
+    
+    <div class="header-item" *ngIf="auth.isAuthenticated(); else login">
+        <a class="nav-link link-icon" routerLink="/users/user/my-orders" routerLinkActive="active">
+            <img class="icon heart" src="/assets/img/gift-icon.png" alt="my orders" title="Go to my orders">
+        </a>
+        <a class="nav-link link-icon" routerLinkActive="active" (click)="showFavoriteWindow()">
+            <img class="icon heart" src="/assets/img/header/heart_icon-icons.com_70945.svg" alt="favorite" title="Go to favorites">
+        </a>
+        <a class="nav-link link-icon" routerLink="/users/cart">
+            <img class="icon basket" src="/assets/img/header/shoppingstorecart_99691.svg" alt="basket" title="Go to cart">
+        </a>
+        <a class="nav-link" href="#" (click)="openDialog($event)"  routerLinkActive="active">Logout</a>
+    </div>
+    <ng-template #login>
+        <div class="header-item">
+            <a class="nav-link" routerLink="/users/login" routerLinkActive="active">Login</a>| 
+            <a class="nav-link" routerLink="/users/registration" routerLinkActive="active">Sign Up</a>
+        </div>
+    </ng-template>
+</header>

@@ -1,0 +1,19 @@
+<div class="container-item-details" *ngIf="certificate; else loading">
+    <img class="img img-item-details" src="/assets/img/gift-certificate.jpeg" alt="gift-certificate">
+    <div class="info-item-details">
+        <h3 class="info-item-details-title">{{ certificate.name }}</h3>
+        <div>{{ certificate.description }}</div>
+        <div class="info-item-expires">
+            Expires in  <span class="bold-black-text">{{ certificate.duration }}</span>
+        </div>
+        <div class="info-item-details-buy">
+            <span class="info-item-details-price"><h3>Price: {{ certificate.price }} BYN</h3></span>
+            <a class="link-info-details-cart" routerLink="/users/cart">
+                <img class="icon-info-item-cart" src="/assets/img/header/shoppingstorecart_99691.svg" alt="cart" (click)="openDialog(certificate)" title="Add to cart">
+            </a>
+        </div>
+    </div>
+</div>
+<ng-template #loading>
+    <p class="loading">Loading...</p>
+</ng-template>

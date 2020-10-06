@@ -1,0 +1,13 @@
+<div class="container-item-details" *ngIf="bikeGoods; else loading">
+    <img class="img img-item-details" src="/assets/img/bike.jpg" alt="bike">
+    <div class="info-item-details">
+        <h3 class="info-item-details-title">{{ bikeGoods.name }}</h3>
+        <div>{{ bikeGoods.goodsType }}</div>
+        <div class="info-item-details-buy">
+            <span class="info-item-details-price"><h3>Price: {{ bikeGoods.price }} BYN</h3></span>
+        </div>
+    </div>
+</div>
+<ng-template #loading>
+    <p class="loading">Loading...</p>
+</ng-template>

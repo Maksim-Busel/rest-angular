@@ -1,0 +1,10 @@
+<mat-dialog-content class="mat-typography">
+    <div class="dialog-window">
+      <p class="title-message">{{title}}</p>
+      <p class="message">{{text}}</p>
+    </div>
+    <mat-dialog-actions  align="end">
+        <button class="btn-all" mat-raised-button [mat-dialog-close]="true" cdkFocusInitial *ngIf="btnReturnAll"> {{btnReturnAll}} </button>
+    </mat-dialog-actions>
+</mat-dialog-content>
+  

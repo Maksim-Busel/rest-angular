@@ -1,0 +1,28 @@
+.dialog-window {  
+  .title-message {
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+    color: rgba(143, 17, 17, 0.877);
+    padding-bottom: 20px;
+  }
+
+  .message {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .btn-details {
+    margin: 0 20 px;
+  }
+
+  .btn-ok {
+    text-align: center;
+  }
+}
+
+.btn-details:hover {
+  color: red;
+  border: 1px solid black;
+}

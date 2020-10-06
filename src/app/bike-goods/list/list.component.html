@@ -1,0 +1,26 @@
+<div class="page-title">
+    <div class="page-title-item-wrap">
+        <h1 class="page-title-item">Bike goods</h1>
+    </div>
+</div>
+
+<div class="tabs-content" id="tabs-content" *ngIf="bikeGoods; else loading">
+    <div class="catalog-item" *ngFor="let goods of bikeGoods">
+        <a routerLink="/bike-goods/{{ goods.id }}" id="link-catalog-item">
+            <img class="catalog-item-image" src="/assets/img/bike.jpg" alt="catalog-item-image" title="More details">
+        </a>
+        <div class="catalog-item-info">
+            <div class="catalog-info-content">
+                <div class="bold-black-text" id="catalog-item-title">{{ goods.name }}</div>
+            </div>
+            <div class="catalog-content-expires">Goods type: <span class="bold-black-text">{{ goods.goodsType}}</span></div>
+            <div class="catalog-price-wrap">
+                <div class="bold-black-text">{{ goods.price }} BYN</div>
+            </div>
+        </div>
+    </div>
+    <app-scroll-buttons></app-scroll-buttons>
+</div>
+<ng-template #loading>
+    <p class="loading">Loading...</p>
+</ng-template>

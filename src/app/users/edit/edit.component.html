@@ -1,0 +1,36 @@
+<div class="form-container"  *ngIf="form; else loading">
+    <div class="window-title-wrap">
+        <h3 class="window-title">Edit user</h3>
+    </div>
+    <form [formGroup]="form" (ngSubmit)="openDialog()">
+        <div class="group-container">
+            <div class="form-group">
+                <label class="label" for="username">Username</label>
+                <input class="input-item" type="text" formControlName="username" id="username">
+                <div *ngIf="form.get('username').touched && form.get('username').invalid">
+                    <small class="error" *ngIf="form.get('username').errors.required">Enter username</small>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="label" for="password">Password</label>
+                <input class="form-textarea" type="password" formControlName="password" id="password">
+                <div *ngIf="form.get('password').touched && form.get('password').invalid">
+                    <small class="error" *ngIf="form.get('password').errors.required">Enter password</small>
+                    <small class="error" *ngIf="form.get('password').errors.minlength">
+                        Password must be at least {{form.get('password').errors.minlength.requiredLength}} characters.
+                        Now he is {{form.get('password').errors.minlength.actualLength}}
+                    </small>
+                </div>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn back" type="reset">Reset</button>
+                <button class="btn save" type="submit" [disabled]="form.invalid || submitted">Edit</button>
+            </div>
+        </div>
+    </form>
+</div>
+<ng-template #loading>
+    <p class="loading">Loading...</p>
+</ng-template>

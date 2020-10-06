@@ -1,0 +1,22 @@
+.dialog-window {
+    min-width: 300px;
+    min-height: 200px;
+  
+    .title-message {
+      font-size: 24px;
+      font-weight: 500;
+      color: rgba(143, 17, 17, 0.877);
+      padding-bottom: 20px;
+    }
+  
+    .message {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  
+    .btn-details,
+    .btn-all {
+      margin: 0 20 px;
+    }
+  }
